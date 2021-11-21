@@ -1,5 +1,5 @@
 <?php
-namespace Src\Lib\Main\Http;
+namespace Src\Lib\Main\Web;
 
 trait Serialize
 {
