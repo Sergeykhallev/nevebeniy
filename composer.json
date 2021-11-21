@@ -1,0 +1,15 @@
+{
+    "name": "userpc/api",
+    "autoload": {
+        "psr-4": {
+            "Userpc\\Api\\": "src/",
+            "Src\\Lib\\Main\\": "src/Lib/Main",
+            "Src\\Lib\\Main\\DB\\": "src/Lib/Main/DB",
+            "Src\\Lib\\Main\\Http\\": "src/Lib/Main/Http",
+            "Src\\Lib\\Main\\Models\\": "src/Lib/Main/Models",
+            "Src\\Lib\\Main\\Storage\\": "src/Lib/Main/Storage",
+            "Src\\Lib\\": "src/Lib"
+        }
+    },
+    "require": {}
+}
