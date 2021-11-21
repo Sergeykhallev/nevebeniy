@@ -3,8 +3,12 @@ use Src\Lib\Main\Models\User;
 
 require_once "../vendor/autoload.php";
 
-// очень надо запустить проверить как выглядит запрос
-$sql = User::query()->where('id', 1)->setSelect(['id'])->fetch();
+use Src\Lib\Main\Web\Http\HttpRequest;
+
+$request = \Src\Lib\Main\Web\Http::getRequest();
+var_dump($request->get('ok'));
+
+$sql = User::query()->where('id', 1)->setSelect(['*'])->fetch();
 var_dump($sql);
 ?>
 <!DOCTYPE html>

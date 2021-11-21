@@ -20,47 +20,100 @@ class HttpRequest implements Request
         $this->server = $_SERVER;
     }
 
-    public function get($name): string
+    public function get($name)
     {
-        return $this->request[$name];
+        try {
+            if (array_key_exists($name, $this->request)) {
+                return $this->request[$name];
+            }
+            return null;
+        } catch (\Exception $e) {
+            return null;
+        }
     }
 
-    public function query(string $name): string
+    public function query(string $name)
     {
-        return $this->get[$name];
+        try {
+            if (array_key_exists($name, $this->get)) {
+                return $this->get[$name];
+            }
+            return null;
+        } catch (\Exception $e) {
+            return null;
+        }
     }
 
-    public function file(string $name): string
+    public function file(string $name)
     {
-        return $this->files[$name];
+        try {
+            if (array_key_exists($name, $this->files)) {
+                return $this->files[$name];
+            }
+            return null;
+        } catch (\Exception $e) {
+            return null;
+        }
     }
 
-    public function input(string $name): string
+    public function input(string $name)
     {
-        return $this->post[$name];
+        try {
+            if (array_key_exists($name, $this->post)) {
+                return $this->post[$name];
+            }
+            return null;
+        } catch (\Exception $e) {
+            return null;
+        }
     }
 
-    public function ip(): string
+    public function ip()
     {
-        return $this->server['REMOTE_ADDR'];
+        try {
+            if (array_key_exists('REMOTE_ADDR', $this->server)) {
+                return $this->server['REMOTE_ADDR'];
+            }
+            return null;
+        } catch (\Exception $e) {
+            return null;
+        }
     }
 
-    public function method(): string
+    public function method()
     {
-        return $this->server['REQUEST_METHOD'];
+        try {
+            if (array_key_exists('REQUEST_METHOD', $this->server)) {
+                return $this->server['REQUEST_METHOD'];
+            }
+            return null;
+        } catch (\Exception $e) {
+            return null;
+        }
     }
 
-    public function cookie(string $name): string
+    public function cookie(string $name)
     {
-        return $this->cookie[$name];
+        try {
+            if (array_key_exists($name, $this->cookie)) {
+                return $this->cookie[$name];
+            }
+            return null;
+        } catch (\Exception $e) {
+            return null;
+        }
     }
 
     public function hasFile(string $name): bool
     {
-        if (!empty($this->files[$name])) {
-            return true;
+        try {
+            if (!empty($this->files[$name])) {
+                return true;
+            }
+            return false;
+        } catch (\Exception $e) {
+            return false;
         }
-        return false;
     }
 
     public function only(array $only): array
@@ -91,33 +144,49 @@ class HttpRequest implements Request
 
     public function isMethod(string $method): bool
     {
-        if ($this->method() == $method) {
-            return true;
+        try {
+            if ($this->method() == $method) {
+                return true;
+            }
+            return false;
+        } catch (\Exception $e) {
+            return false;
         }
-        return false;
     }
 
     public function missing(string $name): bool
     {
-        if (empty($this->request[$name])) {
-            return true;
+        try {
+            if (empty($this->request[$name])) {
+                return true;
+            }
+            return false;
+        } catch (\Exception $e) {
+            return false;
         }
-        return false;
     }
 
     public function has(string $name): bool
     {
-        if (!empty($this->request[$name])) {
-            return true;
+        try {
+            if (!empty($this->request[$name])) {
+                return true;
+            }
+            return false;
+        } catch (\Exception $e) {
+            return false;
         }
-        return false;
     }
 
     public function filled(string $name): bool
     {
-        if (!empty($this->request[$name])) {
-            return true;
+        try {
+            if (!empty($this->request[$name])) {
+                return true;
+            }
+            return false;
+        } catch (\Exception $e) {
+            return false;
         }
-        return false;
     }
 }
