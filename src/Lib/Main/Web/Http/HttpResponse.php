@@ -1,8 +1,12 @@
 <?php
 namespace Src\Lib\Main\Web\Http;
 
+use Src\Lib\Main\Web\Serialize;
+
 class HttpResponse implements Response
 {
+    use Serialize;
+
     const RESPONSE_OK = 200;
     const RESPONSE_BAD_REQUEST = 400;
     const RESPONSE_UNAUTHORIZED = 401;
@@ -11,7 +15,7 @@ class HttpResponse implements Response
     public function sendJSONResponse(array $data)
     {
         header('Content-Type: application/json; charset=utf-8');
-        echo json_encode($data);
+        echo $this->toJson($data);
     }
 
     public function setCode($code): Response
