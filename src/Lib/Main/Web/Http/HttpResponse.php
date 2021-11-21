@@ -3,6 +3,11 @@ namespace Src\Lib\Main\Web\Http;
 
 class HttpResponse implements Response
 {
+    const RESPONSE_OK = 200;
+    const RESPONSE_BAD_REQUEST = 400;
+    const RESPONSE_UNAUTHORIZED = 401;
+    const RESPONSE_FORBIDDEN = 403;
+
     public function sendJSONResponse(array $data)
     {
         header('Content-Type: application/json; charset=utf-8');
